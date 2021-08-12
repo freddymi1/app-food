@@ -1,13 +1,13 @@
 <ion-content>
-  <h3 class="title">
-    {{(cartItems$|async).length}} towards at cart
+  <h3 class="title" *ngIf="(cartItems$|async).length">
+    {{(cartItems$|async).length}} items dans le pannier
   </h3>
 
   <!-- Cart Item -->
   <ion-list lines="none">
     <ion-item-sliding *ngFor="let item of cartItems$|async">
       <ion-item>
-        <app-cart-item [item]="item" (increase)="onImcrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
+        <app-cart-item [item]="item" (increase)="onIncrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option (click)="removeFromCart(item)">
@@ -16,4 +16,16 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <!-- Cart vide -->
+  <div class="empty-cart" *ngIf="!(cartItems$|async).length">
+    <ion-icon name="cart"></ion-icon>
+    <p>Votre pannier est vide</p>
+  </div>
+
+  <!-- CHECKOUT BUTTON -->
+
+  <app-button *ngIf="(cartItems$|async).length">
+    Total: <span>{{totalAmounts$|async|number:'1.2'}}<sup>MGA</sup></span>
+  </app-button>
 </ion-content>

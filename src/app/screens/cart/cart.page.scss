@@ -35,4 +35,36 @@ ion-content{
             background: #fff;
         }
     }
+
+    .empty-cart{
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #c7c7c7;
+
+        ion-icon{
+            font-size: 8rem;
+        }
+
+        p{
+            font-size: 1.8rem;
+        }
+    }
+
+    app-button{
+        display: block;
+        padding-left: 1.6rem;
+
+        span{
+            margin-left: 10px;
+            font-size: 1.5rem;
+
+            sup{
+                font-weight: 400;
+                font-size: 0.9rem;
+            }
+        }
+    }
 }
